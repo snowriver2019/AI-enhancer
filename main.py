@@ -16,9 +16,9 @@ Tokn,kstop,vocab_siz=ToknSeq(kn,padtype)
 
 ####### Read the data and encode the data #############
 records = list(SeqIO.parse("./humanEHC_VISTA-ext_posSet.fa", "fasta"))
-mat_all_pos=encoderKmer(records,Tokn,padtype)
+mat_all_pos=encoderKmer(records,Tokn,padtype,kn,maxn)
 records = list(SeqIO.parse("./humanEHC_VISTA-ext_negSet.fa", "fasta"))
-mat_all_neg=encoderKmer(records,Tokn,padtype)
+mat_all_pos=encoderKmer(records,Tokn,padtype,kn,maxn)
 
 mat_all_pos[mat_all_pos==kstop]=0
 mat_all_neg[mat_all_neg==kstop]=0
