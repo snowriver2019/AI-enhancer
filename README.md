@@ -1,5 +1,5 @@
 # AI-enhancer
-* ## A deep learning algorithm to predict enhancer regions <h2> 
+* ## A deep learning algorithm to predict enhancer regions based on sequence <h2> 
 * ## Workflow <h3> 
 ![GitHub Logo](/images/Model_plot.png)
 * ## Manual <h3> 
