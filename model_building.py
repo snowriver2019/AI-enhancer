@@ -39,7 +39,7 @@ def attentionModel(ntime,nft):
     return(model)
 
 
-rt="./EncodeData"
+rt="./EncodeData/"
 filelist=sys.argv[1]
 nm=sys.argv[2]
 
