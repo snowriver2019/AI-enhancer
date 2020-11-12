@@ -10,6 +10,7 @@
    * [numpy]
    * [pandas]
    * [Bio]
+   * [scikit-learn]
    
 # Data preparation
  1. Add reference genomes (hg19 or mm10) and all necessary genomic data into Data folder. <h4> 
