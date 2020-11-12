@@ -13,8 +13,8 @@
    * [scikit-learn]
    
 # Data preparation and Model training
- 1. Add sequence fasta files into folder Data. <h4> 
- 2. Run python script “sequenceEncode.py” to train and validate the AI-enhancer model. The results will be stored in folder EncodeData. <h4> 
+ 1. Add sequence fasta files into folder "Data". <h4> 
+ 2. Run python script “sequenceEncode.py” to train and validate the AI-enhancer model. The results will be stored in folder "EncodeData". <h4> 
     python sequenceEncode.py humanEHC_VISTA-ext_posSet.fa humanEHC_VISTA-ext_negSet.fa humanEHC_VISTA-ext<h4> 
  3. Run python script "model_building.py". The well-trained AI-enhancer model will be stored in the folder "ModelOutput" for follow-up enhancer prediction. <h4> 
     python multipleModel_AttenComb.py filelist_VISTA VISTA<h4> 
