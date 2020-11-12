@@ -1,29 +1,34 @@
-from keras.preprocessing import sequence
-from keras.models import Sequential, Model, load_model
-from keras.layers import Dense, Dropout, Flatten, LSTM, Bidirectional,Input, multiply, maximum
-from keras.layers.embeddings import Embedding
+from keras.models import Model, load_model
+from keras.layers import Dense, Activation, LSTM, Bidirectional, Lambda,Input,concatenate,subtract, \
+ multiply, maximum,Permute,RepeatVector,
+from sklearn.model_selection import train_test_split
+from keras.callbacks import ModelCheckpoint, EarlyStopping
+from callback_keep_latest import keepbest
 
 
-def model_build(ntime,nft):
+
+def attentionModel(ntime,nft):
 
     inputs1 = Input(shape=(ntime,nft))
-    inputs2 = Input(shape=(ntime,nft))
-    inputs3 = Input(shape=(1,))
         
-    bilstm = Bidirectional(LSTM(120, return_sequences=False), 
+    bilstm = Bidirectional(LSTM(120, return_sequences=True), 
                             input_shape=(ntime, nft))(inputs1)
-        
-    bilstm2 = Bidirectional(LSTM(120, return_sequences=False), 
-                            input_shape=(ntime, nft))(inputs2)
+    
+    slc1 = Lambda(lambda x: x[:,0,:])(bilstm)
+    slc2 = Lambda(lambda x: x[:,-1,:])(bilstm)
 
-    bil=maximum([bilstm, bilstm2])
+    attention1 = Dense(1, activation='tanh')(bilstm)
+    attention1 = Flatten()(attention1)
+    attention1 = Activation('softmax')(attention1)
+    attention1 = RepeatVector(240)(attention1)
+    attention1 = Permute([2, 1])(attention1)
+    repst1 = multiply([attention1,bilstm])
 
-    emb = Embedding(6, 240, input_length=1)(inputs3)
-    fln = Flatten()(emb)
-    comb = multiply([bil,fln])
-    outputs = Dense(1, activation='sigmoid')(comb)
-    model = Model(inputs=[inputs1,inputs2,inputs3], outputs=outputs)
+    sent_repst1 = Lambda(lambda x: K.sum(x, axis=1))(repst1)
+    comb=concatenate([slc1,slc2,sent_repst1])
+
+    dns=Dense(900)(comb)
+    outputs = Dense(1, activation='sigmoid')(dns)
+    model = Model(inputs=[inputs1], outputs=outputs)
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'])
-    return model
-
-
+    return(model)

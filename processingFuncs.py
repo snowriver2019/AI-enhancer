@@ -8,6 +8,7 @@ hot_table['X']=[0,0,0,0]
 hash_code= { x:y for x, y in zip(hot_table.columns.values,  hot_table.transpose().values) }
 model=load_model("./Model/EpigeneticFeatureModel_epoch-08_acc-0.982-model2.h5")
 
+
 def ecd_seq2(t):
     t3=t.apply(lambda x: [i for i in x])
     mat_pos=np.empty((0,4), int)
