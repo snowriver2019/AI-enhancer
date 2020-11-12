@@ -1,6 +1,6 @@
 # AI-enhancer
-* ## A deep learning algorithm to predict enhancer regions from DNA sequence <h2> 
-* ## Workflow <h3> 
+## A deep learning algorithm to predict enhancer regions from DNA sequence <h2> 
+### Workflow <h3> 
 ![GitHub Logo](/images/Model_plot.png)
 
 # Prerequisites
