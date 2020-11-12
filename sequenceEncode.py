@@ -1,8 +1,10 @@
-from Bio import SeqIO
-from Bio.Seq import Seq
+import sys
 import numpy as np
 import pandas as pd
-import sys
+from Bio import SeqIO
+from Bio.Seq import Seq
+import processingFuncs
+
 
 
 rt="./Data/"
