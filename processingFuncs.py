@@ -1,4 +1,3 @@
-import re
 import numpy as np
 import pandas as pd
 
@@ -69,21 +68,3 @@ def epiEncode(mat):
     mat_ecd2=np.array(mat_ecd)
     return(mat_ecd2)
 
-
-# def encoderKmer(records,Tokn,padtype,kn,maxn):
-#     mat_seq=list()
-#     for rcd in records:
-#         sqa=str(rcd.seq)
-#         sqb=sqa.upper()
-#         sq=sqb.replace("N","")
-#         if len(sq)<maxn:
-#             sq=(-len(sq)+maxn)*'X'+sq if padtype == 1 else sq+(-len(sq)+maxn)*'X'
-#         else:
-#             sq=sq[0:maxn]
-#         t=[sq[i:i+kn] for i in range(0,len(sq),kn)]
-#         mt=Tokn.texts_to_sequences(t)
-#         arr_pos1=np.array(mt)
-#         arr_pos2=arr_pos1.reshape(-1)
-#         mat_seq.append(arr_pos2.tolist())
-#     mat_all=np.array(mat_seq)
-#     return mat_all
