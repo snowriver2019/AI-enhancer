@@ -67,8 +67,8 @@ ntime=X_train.shape[1]
 nft=X_train.shape[2]
 
 model=attentionModel(ntime,nft)
-
-filepath = rt+"AttentionCombModel_epoch-{epoch:02d}_acc-{val_acc:.2f}-" + nm
+rto="./ModelOutput/"
+filepath = rto+"AttentionCombModel_epoch-{epoch:02d}_acc-{val_acc:.2f}-" + nm
 checkpoint = keepbest(filepath=filepath, monitor='val_acc', verbose=1, \
      save_best_only=True, mode='max',save_weights_only=False)
 earlystopper = EarlyStopping(monitor='val_loss', patience=5, verbose=1)
