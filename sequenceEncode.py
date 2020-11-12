@@ -3,7 +3,8 @@ import numpy as np
 import pandas as pd
 from Bio import SeqIO
 from Bio.Seq import Seq
-import processingFuncs
+from processingFuncs import encoderFW, encoder1hot, epiEncode
+
 
 
 
@@ -18,18 +19,13 @@ wnsz=1000
 records = list(SeqIO.parse(rt+fl1, "fasta"))
 mat_seq = encoderFW(records,maxn,wnsz,stp)
 mat_all_pos = encoder1hot(mat_seq)
-np.save(rt+nm+'_pos_1hotFW.npy',mat_all_pos)
-mat_seq = encoderBW(records,maxn,wnsz,stp)
-mat_all_pos = encoder1hot(mat_seq)
-np.save(rt+nm+'_pos_1hotBW.npy',mat_all_pos)
+mat_ps = epiEncode(mat_all_pos)
+np.save(rt+nm+"_pos_epiFt.npy",mat_ps)
 
 records = list(SeqIO.parse(rt+fl2, "fasta"))
 mat_seq = encoderFW(records,maxn,wnsz,stp)
 mat_all_neg=encoder1hot(mat_seq)
-np.save(rt+nm+'_neg_1hotFW.npy',mat_all_neg)
-mat_seq = encoderBW(records,maxn,wnsz,stp)
-mat_all_neg = encoder1hot(mat_seq)
-np.save(rt+nm+'_neg_1hotBW.npy',mat_all_neg)
-
+mat_ng = epiEncode(mat_all_neg)
+np.save(rt+nm+"_neg_epiFt.npy",mat_ng)
 
 
