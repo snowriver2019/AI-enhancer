@@ -1,10 +1,15 @@
+import glob
+import sys
+import numpy as np
+import pandas as pd
+from keras import backend as K
 from keras.models import Model, load_model
 from keras.layers import Dense, Activation, LSTM, Bidirectional, Lambda,Input,concatenate,subtract, \
  multiply, maximum,Permute,RepeatVector,
 from sklearn.model_selection import train_test_split
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from callback_keep_latest import keepbest
-import pandas as pd
+
 
 
 def attentionModel(ntime,nft):
@@ -61,7 +66,7 @@ X_train, X_test, ts_train,ts_test,Y_train, Y_test ,indx_train,indx_test = train_
 ntime=X_train.shape[1]
 nft=X_train.shape[2]
 
-model_aa=attentionModel(ntime,nft)
+model=attentionModel(ntime,nft)
 
 filepath = rt+"AttentionCombModel_epoch-{epoch:02d}_acc-{val_acc:.2f}-" + nm
 checkpoint = keepbest(filepath=filepath, monitor='val_acc', verbose=1, \
@@ -69,7 +74,7 @@ checkpoint = keepbest(filepath=filepath, monitor='val_acc', verbose=1, \
 earlystopper = EarlyStopping(monitor='val_loss', patience=5, verbose=1)
 callbacks_list = [checkpointer,earlystopper]
 
-model_aa.fit(X_train, Y_train, epochs=56, batch_size=50, callbacks=callbacks_list,
+model.fit(X_train, Y_train, epochs=56, batch_size=50, callbacks=callbacks_list,
           validation_data=(X_test, Y_test),verbose=2)
 
 
