@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+from Bio import SeqIO
+from Bio.Seq import Seq
 
 tbs = pd.Series(list('AGCT'))
 hot_table= pd.get_dummies(tbs)
