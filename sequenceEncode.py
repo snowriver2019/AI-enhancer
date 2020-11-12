@@ -5,10 +5,10 @@ import pandas as pd
 import sys
 
 
-rt=sys.argv[1]
-fl1=sys.argv[2]
-fl2=sys.argv[3]
-nm=sys.argv[4]
+rt="./Data/"
+fl1=sys.argv[1]
+fl2=sys.argv[2]
+nm=sys.argv[3]
 
 maxn=9000  
 stp=200
