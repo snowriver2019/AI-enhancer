@@ -1,1 +1,2 @@
+python sequenceEncode.py humanEHC_VISTA-ext_posSet.fa humanEHC_VISTA-ext_negSet.fa humanEHC_VISTA-ext
 python multipleModel_AttenComb.py filelist_VISTA VISTA
