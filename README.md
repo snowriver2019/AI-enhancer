@@ -13,6 +13,7 @@
    * [scikit-learn]
    
 # Data preparation and Model training
+style="background-color: #a4f9ef7F"
  1. Add sequence fasta files into folder "Data". <h4> 
  2. Run python script “sequenceEncode.py” to train and validate the AI-enhancer model. The results will be stored in folder "EncodeData". <h4> 
     python sequenceEncode.py humanEHC_VISTA-ext_posSet.fa humanEHC_VISTA-ext_negSet.fa humanEHC_VISTA-ext<h4> 
