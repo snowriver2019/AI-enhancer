@@ -22,3 +22,4 @@
  4. AI-enhancer will provide enhancer prediction with probability scores to rank all candidate enhancers, which will facilitate the follow-up experimental validation (e.g. CRISPR/Cas9 knockout of predicted enhancers). 
 
 ```
+ 1. Add sequence fasta files into folder "Data".  <A4>
